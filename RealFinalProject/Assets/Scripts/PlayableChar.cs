@@ -48,7 +48,7 @@ public class PlayableChar : GameManager {
 
         if (canShoot == true)
         {
-            if (Input.GetButton("Fire1"))
+            if (Input.GetButton("Jump"))
             {
                 CmdHandleSpecialAbility();
                 canShoot = false;
