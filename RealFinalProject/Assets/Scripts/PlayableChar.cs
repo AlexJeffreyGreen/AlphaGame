@@ -8,6 +8,8 @@ public class PlayableChar : GameManager {
 	public float x;
 	public float y;
 
+    
+
     [SyncVar]
 	public float movementSpeed = 2.0f;
 
@@ -64,7 +66,10 @@ public class PlayableChar : GameManager {
     [Command]
     void CmdHandleSpecialAbility(){
         Debug.Log("SpecialAbility");
+        Debug.Log("Spacebar pressed");
     }
+
+    
 
 
 }

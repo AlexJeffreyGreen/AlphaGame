@@ -24,6 +24,7 @@ public class GameManager : NetworkBehaviour {
 		}
 	}
 
+    [Server]
 	void UpdateServer(){
 		
 	}
