@@ -2,7 +2,7 @@
 using System.Collections;
 using UnityEngine.Networking;
 
-public class PlayableChar : GameManager {
+public abstract class PlayableChar : GameManager {
 
 
 	public float x;
@@ -21,6 +21,9 @@ public class PlayableChar : GameManager {
 
 	Rigidbody2D rig;
 
+    [SyncVar]
+    public int DIR;
+
 
 	// Use this for initialization
 	void Start () {
@@ -28,7 +31,7 @@ public class PlayableChar : GameManager {
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	public virtual void Update () {
 		x = Input.GetAxisRaw ("Horizontal");
 		y = Input.GetAxisRaw ("Vertical");
 
@@ -64,10 +67,11 @@ public class PlayableChar : GameManager {
 	}
 
     [Command]
-    void CmdHandleSpecialAbility(){
-        Debug.Log("SpecialAbility");
-        Debug.Log("Spacebar pressed");
-    }
+    public abstract void CmdHandleSpecialAbility();
+    /*{
+       Debug.Log("SpecialAbility");
+       Debug.Log("Spacebar pressed");
+    }*/
 
     
 
