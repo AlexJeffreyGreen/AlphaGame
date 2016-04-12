@@ -9,6 +9,9 @@ public abstract class PlayableChar : GameManager {
 	public float y;
 
     
+    //*************************************************
+    //Sync Vars for client information
+    //*************************************************
 
     [SyncVar]
 	public float movementSpeed = 2.0f;
@@ -19,26 +22,65 @@ public abstract class PlayableChar : GameManager {
     [SyncVar]
     public bool canShoot = true;
 
-	Rigidbody2D rig;
-
     [SyncVar]
     public int DIR;
 
+    Rigidbody2D rig;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
 		rig = this.gameObject.GetComponent<Rigidbody2D> ();
 	}
 	
 	// Update is called once per frame
 	public virtual void Update () {
 		x = Input.GetAxisRaw ("Horizontal");
+
+        //*********************************************
+        //Directional changes for shooting bullets
+        //*********************************************
+
+        if (x < 0)
+        {
+            DIR = 2;
+            Debug.Log(DIR);
+        }
+
+        if (x > 0)
+        {
+            DIR = 0;
+            Debug.Log(DIR);
+        }
+
 		y = Input.GetAxisRaw ("Vertical");
 
-		CmdHandleMovement (x, y);
+        if (y < 0)
+        {
+            DIR = 1;
+            Debug.Log(DIR);
+        }
+
+        if (y > 0)
+        {
+            DIR = 3;
+            Debug.Log(DIR);
+        }
+
+        //*********************************************
+        //Directional changes for shooting bullets
+        //*********************************************
+
+        CmdHandleMovement(x, y);
+
+
+        //*********************************************
+        //Handling the shooting variable based on a timer
+        //which is based on Time delta time
+        //*********************************************
+
+
         if (canShoot == false)
         {
-            
             if (SpTimer > 0)
             {
                 SpTimer -= Time.deltaTime;
@@ -59,7 +101,17 @@ public abstract class PlayableChar : GameManager {
                 canShoot = false;
             }
         }
+
+        //********************************************
+        //End of time delta timer for bullet movement
+        //********************************************
 	}
+
+    //*************************************************
+    //Commands for client movement and an abstraction
+    //special ability method, which is overwritten by the 
+    //player classes. Gunner, Det, and Poultry
+    //*************************************************
 
 	[Command]
 	void CmdHandleMovement(float x, float y){
@@ -68,10 +120,7 @@ public abstract class PlayableChar : GameManager {
 
     [Command]
     public abstract void CmdHandleSpecialAbility();
-    /*{
-       Debug.Log("SpecialAbility");
-       Debug.Log("Spacebar pressed");
-    }*/
+  
 
     
 
