@@ -25,7 +25,7 @@ public abstract class PlayableChar : GameManager {
     [SyncVar]
     public int DIR;
 
-    Rigidbody2D rig;
+    public Rigidbody2D rig;
 
     // Use this for initialization
     void Start () {
@@ -54,13 +54,13 @@ public abstract class PlayableChar : GameManager {
 
 		y = Input.GetAxisRaw ("Vertical");
 
-        if (y < 0)
+        if (y > 0)
         {
             DIR = 1;
             Debug.Log(DIR);
         }
 
-        if (y > 0)
+        if (y < 0)
         {
             DIR = 3;
             Debug.Log(DIR);
