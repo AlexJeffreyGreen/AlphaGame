@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.Networking;
+using System;
 
 public class Gunner : PlayableChar {
 
@@ -57,5 +58,8 @@ public class Gunner : PlayableChar {
         //Destroy(clone, 5.0f);
     }
 
-
+    public override void CmdGhostAbility()
+    {
+        throw new NotImplementedException();
+    }
 }

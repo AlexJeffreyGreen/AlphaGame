@@ -25,7 +25,16 @@ public abstract class PlayableChar : GameManager {
     [SyncVar]
     public int DIR;
 
+    [SyncVar]
+    public bool ghostAbil = true;
+
+    [SyncVar]
+    public float ghostAbilTimer = 6.0f;
+
+
     public Rigidbody2D rig;
+
+
 
     // Use this for initialization
     void Start () {
@@ -105,7 +114,29 @@ public abstract class PlayableChar : GameManager {
         //********************************************
         //End of time delta timer for bullet movement
         //********************************************
-	}
+
+        if (ghostAbil == false)
+        {
+            if (ghostAbilTimer > 0)
+            {
+                ghostAbilTimer -= Time.deltaTime;
+            }
+
+            if (ghostAbilTimer <= 0)
+            {
+                ghostAbil = true;
+                ghostAbilTimer += 6.0f;
+            }
+        }
+
+        if (ghostAbil == true)
+        {
+            if (Input.GetKey("P"))
+            {
+               // Cm
+            }
+        }
+    }
 
     //*************************************************
     //Commands for client movement and an abstraction
@@ -120,8 +151,9 @@ public abstract class PlayableChar : GameManager {
 
     [Command]
     public abstract void CmdHandleSpecialAbility();
-  
 
+    [Command]
+    public abstract void CmdGhostAbility();
     
 
 
