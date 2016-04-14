@@ -51,6 +51,7 @@
      <Compile Include="Assets\Scripts\Ghost.cs" />
      <Compile Include="Assets\Scripts\Gunner.cs" />
      <Compile Include="Assets\Scripts\LobbyPlayer.cs" />
+     <Compile Include="Assets\Scripts\Multihud.cs" />
      <Compile Include="Assets\Scripts\Playable.cs" />
      <Compile Include="Assets\Scripts\PlayableChar.cs" />
  <Reference Include="UnityEngine.UI">

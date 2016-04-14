@@ -60,6 +60,8 @@ public class Gunner : PlayableChar {
 
     public override void CmdGhostAbility()
     {
-        throw new NotImplementedException();
+
+        Debug.Log("No Ability for gunner on this key");
+        //throw new NotImplementedException();
     }
 }

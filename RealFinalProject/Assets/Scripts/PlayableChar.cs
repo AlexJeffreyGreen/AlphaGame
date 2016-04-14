@@ -131,9 +131,10 @@ public abstract class PlayableChar : GameManager {
 
         if (ghostAbil == true)
         {
-            if (Input.GetKey("P"))
+            if (Input.GetKey("p"))
             {
-               // Cm
+                CmdGhostAbility();
+                ghostAbil = false;
             }
         }
     }
