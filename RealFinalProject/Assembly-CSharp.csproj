@@ -48,6 +48,7 @@
      <Compile Include="Assets\Scripts\Bullet.cs" />
      <Compile Include="Assets\Scripts\CollidableMovingObject.cs" />
      <Compile Include="Assets\Scripts\GameManager.cs" />
+     <Compile Include="Assets\Scripts\Ghost.cs" />
      <Compile Include="Assets\Scripts\Gunner.cs" />
      <Compile Include="Assets\Scripts\LobbyPlayer.cs" />
      <Compile Include="Assets\Scripts\Playable.cs" />

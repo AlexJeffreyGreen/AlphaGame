@@ -8,7 +8,7 @@ public class Gunner : PlayableChar {
 
     public float bulletSpeed = 5.0f;
     public Transform bulletSpawn;
-    public Rigidbody2D bulletRig;
+    public GameObject bulletRig;
     // public float bulletTimer = 4.0f;
     public Vector2 shootingDirection;
 
@@ -16,13 +16,13 @@ public class Gunner : PlayableChar {
     public override void Update()
     {
         base.Update();
-
     }
 
     [Command]
     public override void CmdHandleSpecialAbility()
     {
-        Rigidbody2D clone = Instantiate(bulletRig, rig.position, Quaternion.identity) as Rigidbody2D;
+        GameObject clone = (GameObject)Instantiate(bulletRig, rig.position, Quaternion.identity);
+        NetworkServer.Spawn(clone);
         shootingDirection = new Vector2(DIR, 0);
         
 
@@ -50,10 +50,11 @@ public class Gunner : PlayableChar {
 
         Physics2D.IgnoreCollision(clone.GetComponent<Collider2D>(), GetComponent<Collider2D>());
 
-        clone.velocity = shootingDirection * bulletSpeed;
+        clone.GetComponent<Rigidbody2D>().velocity = shootingDirection * bulletSpeed;
         Debug.Log("Override");
 
-        Destroy(clone, 5.0f);
+
+        //Destroy(clone, 5.0f);
     }
 
 
