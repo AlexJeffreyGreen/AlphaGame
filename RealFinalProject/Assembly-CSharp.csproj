@@ -45,8 +45,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Lobby\EndingGame\G_Over.cs" />
+     <Compile Include="Assets\Lobby\Players\LobbyPlayer\MyOwnLobbyPlayer.cs" />
+     <Compile Include="Assets\Lobby\Players\Player\test.cs" />
      <Compile Include="Assets\Scripts\Bullet.cs" />
      <Compile Include="Assets\Scripts\CollidableMovingObject.cs" />
+     <Compile Include="Assets\Scripts\Detective.cs" />
      <Compile Include="Assets\Scripts\GameManager.cs" />
      <Compile Include="Assets\Scripts\Ghost.cs" />
      <Compile Include="Assets\Scripts\Gunner.cs" />
