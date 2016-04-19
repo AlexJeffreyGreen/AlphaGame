@@ -10,20 +10,27 @@ public class Gunner : PlayableChar {
     public float bulletSpeed = 5.0f;
     public Transform bulletSpawn;
     public GameObject bulletRig;
+    
     // public float bulletTimer = 4.0f;
     public Vector2 shootingDirection;
 
-
-    public override void Update()
-    {
-        base.Update();
-    }
+    //public override void Update()
+    //{
+    //    base.Update();
+    //}
 
     [Command]
     public override void CmdHandleSpecialAbility()
     {
+      //  bulletRig = (GameObject)Resources.Load("Prefabs/Bullet", typeof (GameObject));
+     //   bulletRig = (GameObject)Resources.Load("Bullet", typeof(GameObject));
+
+        Debug.Log("Client is using ability");
+
+       // bulletRig = GameObject.Find("/Prefabs/Bullet");
         GameObject clone = (GameObject)Instantiate(bulletRig, rig.position, Quaternion.identity);
         NetworkServer.Spawn(clone);
+        
         shootingDirection = new Vector2(DIR, 0);
         
 
@@ -48,6 +55,7 @@ public class Gunner : PlayableChar {
         }
 
         clone.transform.eulerAngles = new Vector3 (clone.transform.eulerAngles.x, clone.transform.eulerAngles.y, (DIR + 3) * 90);
+
 
         Physics2D.IgnoreCollision(clone.GetComponent<Collider2D>(), GetComponent<Collider2D>());
 

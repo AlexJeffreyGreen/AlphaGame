@@ -33,7 +33,12 @@ public class Bullet : NetworkBehaviour {
        
     }
         
+    void OnTriggerEnter2D(Collider2D C)
+    {
+        //Have to stop bullet here...
+    }
 
+/*
     void OnCollision(Collider2D c)
     {
         if (isServer)
@@ -51,5 +56,5 @@ public class Bullet : NetworkBehaviour {
                 //extra special ;)
             }
         }
-    }
+    }*/
 }
